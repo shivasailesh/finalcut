@@ -1,0 +1,282 @@
+:root {
+  --cream:#f7efdf;
+  --cream-light:#fffaf0;
+  --wine:#6b2938;
+  --wine-dark:#4c1d29;
+  --sage:#71816a;
+  --sage-dark:#566550;
+  --blush:#c97878;
+  --blush-light:#e9b9b0;
+  --gold:#ad8740;
+  --gold-light:#d5b875;
+  --text:#393431;
+  --muted:#716a62;
+  --card:rgba(255,250,240,.88);
+  --shadow:0 20px 60px rgba(82,55,38,.13);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+  background:var(--cream) url("assets/bg-1-no-vinayagar.png") center top / 100% auto repeat-y;
+  background-attachment:scroll;
+}
+
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-style:normal;color:var(--wine)}
+h1{font-size:clamp(42px,8vw,76px);line-height:1.05;margin:10px 0 22px}
+h2{font-size:clamp(36px,6vw,55px);line-height:1.15;margin:0 0 14px}
+h3{font-size:clamp(25px,4vw,34px);margin:8px 0}
+p{margin-top:0}
+
+section{position:relative;width:min(900px,100%);margin:0 auto;padding:clamp(75px,10vw,125px) clamp(18px,6vw,55px);text-align:center;z-index:5}
+.content-card{background:var(--card);border:1px solid rgba(173,135,64,.28);border-radius:18px;padding:clamp(30px,6vw,60px) clamp(20px,6vw,60px);box-shadow:var(--shadow);backdrop-filter:blur(5px)}
+.section-label{color:var(--sage-dark);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.subtitle{color:var(--sage-dark);font-size:17px;font-weight:600;margin-bottom:24px}
+
+/* Opening */
+#gate{position:fixed;inset:0;z-index:100;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#4c1d29,#6b2938)}
+.panel{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(145deg,#4c1d29,#6b2938);transition:transform 1.1s cubic-bezier(.65,0,.35,1)}
+.panel.left{left:0;border-right:1px solid rgba(213,184,120,.4)}
+.panel.right{right:0;border-left:1px solid rgba(213,184,120,.4)}
+#gate.opened .panel.left{transform:translateX(-100%)}
+#gate.opened .panel.right{transform:translateX(100%)}
+.gate-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;transition:opacity .55s ease}
+#gate.opened .gate-content{opacity:0;pointer-events:none}
+.crest{width:105px;height:105px;border:1px solid var(--gold-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:25px}
+.crest span{font-family:Arial,sans-serif;font-size:45px;color:var(--gold-light);line-height:1}
+.g-names{display:flex;align-items:center;justify-content:center;gap:18px;color:#fff;font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:clamp(42px,9vw,72px);line-height:1;margin-bottom:25px}
+.heart-name{color:var(--blush-light);font-family:Arial,sans-serif;font-size:.62em;line-height:1}
+.invite-line{color:#fff4e7;font-size:clamp(16px,4vw,21px);font-weight:500;margin-bottom:25px}
+.tap-cue{color:var(--gold-light);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.16em}
+
+/* Hero */
+.hero{min-height:95vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-content{text-align:center;max-width:800px}
+.badge{width:64px;height:64px;margin:0 auto 22px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,250,240,.94);color:var(--wine);font-size:25px}
+.eyebrow{color:var(--sage-dark);font-size:13px;font-weight:800;letter-spacing:.2em}
+.hero h1 span{color:var(--blush)}
+.hero-date{display:inline-block;color:var(--wine);font-size:clamp(25px,5vw,38px);font-weight:800;letter-spacing:.04em;padding:12px 25px;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+.hero-note{color:var(--sage-dark);font-size:15px;font-weight:500;margin-top:22px}
+.scroll-cue{margin-top:65px;color:var(--sage-dark);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;text-align:center}.scroll-cue span{display:block;font-size:25px;margin-top:8px}
+
+/* Connectors */
+.connector{width:100%;height:60px;display:flex;flex-direction:column;align-items:center}.vine-line{width:1px;height:42px;background:linear-gradient(var(--gold-light),var(--gold))}.mark{width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+
+/* Invitation */
+.parents{display:flex;flex-direction:column;gap:5px;color:var(--sage-dark);font-size:clamp(15px,3vw,18px);font-weight:600}.parents p{margin:0}.parents span{color:var(--gold);font-size:20px}.request-line{max-width:620px;margin:35px auto;color:var(--muted);font-size:16px}
+.couple-formal{display:flex;flex-direction:column;align-items:center;gap:15px}.formal-name{color:var(--wine);font-family:"Playfair Display",Georgia,serif;font-size:clamp(30px,6vw,50px);font-weight:700}.formal-name small{display:block;margin-top:7px;color:var(--gold);font-family:"Montserrat",sans-serif;font-size:12px;letter-spacing:.1em}.weds{display:flex;align-items:center;gap:12px;color:var(--blush);font-size:14px;font-weight:800;letter-spacing:.12em}.weds span{font-family:Arial,sans-serif;font-size:20px}
+
+/* Countdown */
+.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.cbox{background:rgba(255,255,255,.65);border:1px solid rgba(173,135,64,.35);padding:25px 12px}.cbox span{display:block;color:var(--wine);font-family:"Playfair Display",serif;font-size:clamp(32px,6vw,48px);font-weight:700;line-height:1}.cbox small{display:block;color:var(--sage-dark);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-top:10px}
+
+/* Events */
+.event{max-width:650px;margin:0 auto 25px;padding:30px 25px;background:rgba(255,255,255,.68);border:1px solid rgba(173,135,64,.35);border-radius:14px}.event-label{color:var(--sage-dark);font-size:11px;font-weight:800;letter-spacing:.15em;margin-bottom:7px}.event-date{color:var(--wine);font-size:clamp(28px,5vw,38px);font-weight:800;line-height:1.2}.event-time{color:var(--gold);font-size:clamp(21px,4vw,28px);font-weight:800;margin:5px 0 12px}.event p{max-width:520px;margin:0 auto;color:var(--muted);font-size:15px}
+
+/* Venue */
+.divider{width:80px;height:2px;background:var(--gold);margin:0 auto 25px}.venue{color:var(--wine)}.address{max-width:600px;margin:0 auto 28px;color:var(--muted)}.btn{display:inline-flex;align-items:center;justify-content:center;min-width:190px;padding:13px 25px;border:1px solid var(--gold);border-radius:30px;background:var(--wine);color:#fff;font-size:14px;font-weight:800;text-decoration:none}.btn:hover{background:var(--wine-dark)}
+
+/* Footer */
+footer{
+  max-width:760px;
+  margin:45px auto 70px;
+  padding:34px 24px 38px;
+  text-align:center;
+  color:#4b1728;
+  background:rgba(255,252,246,.94);
+  border:1px solid rgba(173,135,64,.45);
+  border-radius:18px;
+  box-shadow:0 14px 40px rgba(55,25,30,.16);
+  backdrop-filter:blur(5px);
+}
+.footer-heart{
+  color:var(--blush);
+  font-size:30px;
+  line-height:1;
+  margin-bottom:12px;
+  font-family:Arial,sans-serif;
+  text-shadow:0 1px 2px rgba(80,30,40,.18);
+}
+footer p{
+  margin:0 0 8px;
+  color:#5a2634;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.5;
+  text-shadow:0 1px 1px rgba(255,255,255,.8);
+}
+footer strong{
+  display:block;
+  color:#5a1d2f;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:25px;
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:.01em;
+  text-shadow:0 1px 1px rgba(255,255,255,.8);
+}
+
+.music-toggle{position:fixed;right:18px;bottom:18px;z-index:50;border:1px solid var(--gold);border-radius:30px;padding:10px 18px;background:rgba(255,250,240,.94);color:var(--wine);font-family:"Montserrat",sans-serif;font-size:12px;font-weight:800}
+
+.reveal{opacity:1;transform:none}
+
+@media (max-width:650px){
+  body{background-size:100% auto;background-position:center top;background-repeat:repeat-y;background-attachment:scroll}
+  section{padding:60px 14px}
+  .hero{min-height:90vh}
+  .g-names{gap:10px;font-size:clamp(38px,12vw,58px)}
+  .countdown-grid{grid-template-columns:repeat(2,1fr)}
+  .content-card{border-radius:14px;padding:30px 20px}
+  .music-toggle{right:12px;bottom:12px}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* Photo carousel */
+.gallery .content-card{overflow:hidden;padding-top:34px;padding-bottom:28px}
+.photo-carousel{display:flex;align-items:center;gap:10px;position:relative}
+.photo-viewport{overflow:hidden;width:100%;border-radius:14px}
+.photo-track{display:flex;transition:transform .65s ease;will-change:transform}
+.photo-slide{min-width:100%;padding:0 2px}
+.photo-frame{position:relative;height:360px;background:#f4ead9;border:1px solid rgba(173,135,64,.38);border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.carousel-arrow{flex:0 0 40px;width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;background:rgba(255,250,240,.95);color:var(--wine);font-family:Arial,sans-serif;font-size:29px;line-height:1;cursor:pointer;z-index:3}
+.carousel-arrow:hover{background:var(--wine);color:#fff}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:15px}
+.carousel-dot{width:9px;height:9px;padding:0;border:1px solid var(--gold);border-radius:50%;background:transparent;cursor:pointer}
+.carousel-dot.active{background:var(--wine)}
+.gallery-help{margin:14px auto 0;color:var(--muted);font-size:12px;line-height:1.6;max-width:560px}
+.gallery-help strong{color:var(--wine)}
+@media (max-width:650px){
+  .photo-carousel{gap:5px}
+  .carousel-arrow{flex-basis:34px;width:34px;height:34px;font-size:24px}
+  .photo-frame{height:245px}
+}
+
+
+
+
+/* =========================================================
+   FRONT PAGE — CENTER CLOSED -> SPLIT TO CORNERS
+   The rest of the V7 design is unchanged.
+   ========================================================= */
+
+#gate{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  overflow:hidden;
+  cursor:pointer;
+  background:#f7efdf;
+  isolation:isolate;
+}
+
+.front-panel{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:50%;
+  z-index:2;
+  background-image:url("assets/front-cover.png");
+  background-repeat:no-repeat;
+  background-size:200% 100%;
+  box-shadow:0 0 0 1px rgba(173,135,64,.45);
+  will-change:transform;
+  transition:transform 1.35s cubic-bezier(.77,0,.18,1);
+}
+
+/* CLOSED STATE: both halves are together, forming one complete image. */
+.front-panel.left{
+  left:0;
+  background-position:left center;
+  transform:translateX(0);
+}
+.front-panel.right{
+  right:0;
+  background-position:right center;
+  transform:translateX(0);
+}
+
+/* Small center seam, like two elegant invitation doors. */
+#gate::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(173,135,64,.15),rgba(173,135,64,.85),rgba(173,135,64,.15));
+  box-shadow:0 0 10px rgba(173,135,64,.25);
+  pointer-events:none;
+  opacity:.9;
+}
+
+/* On open: center -> left/right edges. */
+#gate.opened .front-panel.left{
+  transform:translateX(-100%);
+}
+#gate.opened .front-panel.right{
+  transform:translateX(100%);
+}
+#gate.opened::after{
+  opacity:0;
+  transition:opacity .3s ease;
+}
+#gate.opened{
+  pointer-events:none;
+}
+
+/* Gentle idle movement so the front page feels alive, without moving the split. */
+#gate:not(.opened) .front-panel{
+  animation:frontBreath 5s ease-in-out infinite;
+}
+@keyframes frontBreath{
+  0%,100%{filter:brightness(1) saturate(1)}
+  50%{filter:brightness(1.025) saturate(1.02)}
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+@media(max-width:650px){
+  .front-panel{background-size:200% 100%;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .front-panel{animation:none!important;}
+}
+
+/* Venue */
+.map-preview {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto 30px;
+  border: 1px solid var(--gold-light);
+  padding: 6px;
+  background: rgba(255,255,255,.75);
+  box-shadow: var(--shadow);
+}
+
+.map-preview img {
+  width: 100%;
+  display: block;
+}

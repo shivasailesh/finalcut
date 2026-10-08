@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishi & Ramya — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="gate" role="button" tabindex="0" aria-label="Slide to open your invitation">
+  <div class="front-panel left" aria-hidden="true"></div>
+  <div class="front-panel right" aria-hidden="true"></div>
+  <span class="sr-only">Rishi and Ramya wedding invitation. Slide or tap to open.</span>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="hero-content reveal">
+      <div class="badge">♥</div>
+      <p class="eyebrow">OUR WEDDING DAY</p>
+      <h1>Rishi <span>♥</span> Ramya</h1>
+      <div class="hero-date">11th November 2026</div>
+      <p class="hero-note">A celebration of love, family and togetherness</p>
+    </div>
+    <div class="scroll-cue">Scroll to explore <span>↓</span></div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <section class="invitation">
+    <div class="content-card reveal">
+      <p class="section-label">TOGETHER WITH THEIR FAMILIES</p>
+      <div class="parents">
+        <p>Mr. N. Senthilkumar &amp; Mrs. S. Sangeetha</p>
+        <span>&amp;</span>
+        <p>Mr. A. Pitchaimani &amp; Mrs. P. Prema</p>
+      </div>
+      <p class="request-line">Request the pleasure of your company at the wedding of</p>
+      <div class="couple-formal">
+        <div class="formal-name">S. Rishi Prakash<small>B.E., Civil PMP</small></div>
+        <div class="weds"><span>♥</span> WEDS <span>♥</span></div>
+        <div class="formal-name">P. Ramya<small>B.Com., (PA)</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <section class="gallery">
+    <div class="content-card reveal">
+      <div class="badge">♥</div>
+      <p class="section-label">OUR MEMORIES</p>
+      <h2>Photo Gallery</h2>
+      <div class="photo-carousel" aria-label="Wedding photo carousel">
+        <button class="carousel-arrow prev" type="button" aria-label="Previous photo">‹</button>
+        <div class="photo-viewport">
+          <div class="photo-track" id="photoTrack">
+            <div class="photo-slide is-active"><div class="photo-frame"><img src="assets/photos/img-1.jpeg" alt="Rishi and Ramya photo 1"></div></div>
+            <div class="photo-slide"><div class="photo-frame"><img src="assets/photos/img-2.jpeg" alt="Rishi and Ramya photo 2"></div></div>
+            <div class="photo-slide"><div class="photo-frame"><img src="assets/photos/img-3.jpeg" alt="Rishi and Ramya photo 3"></div></div>
+          </div>
+        </div>
+        <button class="carousel-arrow next" type="button" aria-label="Next photo">›</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots" aria-label="Choose a photo"></div>
+      <p class="gallery-help">Swipe or use the arrows to view our memories.</p>
+    </div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <section class="countdown">
+    <div class="content-card reveal">
+      <div class="badge">◷</div>
+      <p class="section-label">THE COUNTDOWN</p>
+      <h2>Until our big day</h2>
+      <p class="subtitle">Every moment brings us closer</p>
+      <div class="countdown-grid">
+        <div class="cbox"><span id="days">00</span><small>Days</small></div>
+        <div class="cbox"><span id="hours">00</span><small>Hours</small></div>
+        <div class="cbox"><span id="mins">00</span><small>Minutes</small></div>
+        <div class="cbox"><span id="secs">00</span><small>Seconds</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <section class="schedule">
+    <div class="content-card reveal">
+      <div class="badge">♥</div>
+      <p class="section-label">JOIN US</p>
+      <h2>The Celebrations</h2>
+      <p class="subtitle">Two beautiful moments, one unforgettable celebration</p>
+
+      <article class="event">
+        <div class="event-label">RECEPTION &amp; CELEBRATION</div>
+        <div class="event-date">10th November</div>
+        <div class="event-time">6:30 PM</div>
+        <h3>The Reception</h3>
+        <p>Join us for an evening of happiness, laughter and togetherness.</p>
+      </article>
+
+      <article class="event">
+        <div class="event-label">THE WEDDING CEREMONY</div>
+        <div class="event-date">11th November</div>
+        <div class="event-time">9:05 – 9:40 AM</div>
+        <h3>The Muhurtham</h3>
+        <p>The auspicious wedding ceremony takes place with the blessings of our families and loved ones.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <section class="location">
+    <div class="content-card reveal">
+      <div class="badge">⌖</div>
+      <p class="section-label">THE VENUE</p>
+      <h2>Where to find us</h2>
+       <div class="map-preview"><img src="assets/directions/venue-map.png" alt="Venue location map" loading="lazy"></div>
+      <div class="divider"></div>
+      <h3 class="venue">Notebook Arangam<br>Thirumana Mandapam</h3>
+      <p class="address">147, Madurai–Mandapam Main Road,<br>Theppakulam, Madurai</p>
+      <a class="btn" href="https://maps.app.goo.gl/sA1rzoan9vjCfVca8?g_st=aw" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </section>
+
+  <div class="connector"><div class="vine-line"></div><div class="mark"></div></div>
+
+  <footer>
+    <div class="footer-heart">♥</div>
+    <p>With best compliments</p>
+    <strong>Friends &amp; Relatives</strong>
+  </footer>
+</main>
+
+<button class="music-toggle" id="musicBtn" type="button" aria-pressed="false">♪ Music</button>
+<audio id="bgm" preload="metadata" loop>
+  <source src="assets/music/background-music.mp3" type="audio/mpeg">
+  <source src="assets/music/background-music.mpeg" type="audio/mpeg">
+</audio>
+<script src="script.js"></script>
+</body>
+</html>
