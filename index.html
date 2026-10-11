@@ -11,10 +11,15 @@
 </head>
 <body>
 
-<div id="gate" role="button" tabindex="0" aria-label="Slide to open your invitation">
-  <div class="front-panel left" aria-hidden="true"></div>
-  <div class="front-panel right" aria-hidden="true"></div>
-  <span class="sr-only">Rishi and Ramya wedding invitation. Slide or tap to open.</span>
+<div id="gate" class="front-gate" role="button" tabindex="0" aria-label="Tap anywhere to open the wedding invitation">
+  <div id="frontCouple" class="front-stage front-stage-couple" aria-hidden="true"></div>
+  <div id="frontClosed" class="front-stage front-stage-closed" aria-hidden="true">
+    <div class="card-door card-door-left"></div>
+    <div class="card-door card-door-right"></div>
+    <div class="card-spine"></div>
+  </div>
+  <div id="frontHint" class="front-hint">Tap anywhere to open invitation</div>
+  <!-- <span class="sr-only">Tap anywhere to open the invitation and reveal Rishi and Ramya.</span> -->
 </div>
 
 <main>

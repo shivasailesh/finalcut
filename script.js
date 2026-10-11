@@ -1,43 +1,35 @@
 const gate = document.getElementById('gate');
-const openButton = document.getElementById('openButton');
+const frontClosed = document.getElementById('frontClosed');
+const frontCouple = document.getElementById('frontCouple');
+const frontHint = document.getElementById('frontHint');
 document.body.style.overflow = 'hidden';
 
-// ---------------- Opening gate ----------------
-// New V7 front animation:
-// 1) Groom enters from the left corner.
-// 2) Bride enters from the right corner.
-// 3) They meet at the center.
-// 4) Visitor clicks/taps/swipes to open.
-// 5) The two panels then separate outward to reveal the unchanged V7 website.
-function openGate(){
-  if(gate.classList.contains('opened')) return;
-  gate.classList.add('opened');
-  document.body.style.overflow = '';
+// Front sequence: invitation card flips open -> couple illustration -> unchanged second page.
+let openingStarted = false;
+function startOpening(){
+  if(openingStarted) return;
+  openingStarted = true;
   startMusic();
-  setTimeout(()=>{ gate.style.display='none'; },1300);
-}
-gate.addEventListener('click', e=>{
-  if(e.target.closest('#openButton')) return;
-  openGate();
-});
-openButton?.addEventListener('click', e=>{
-  e.stopPropagation();
-  openGate();
-});
-gate.addEventListener('keydown', e=>{
-  if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openGate(); }
-});
+  gate.classList.add('card-opening');
 
-let gateTouchStartX = null;
-gate.addEventListener('touchstart', e=>{
-  gateTouchStartX = e.changedTouches[0].clientX;
-},{passive:true});
-gate.addEventListener('touchend', e=>{
-  if(gateTouchStartX === null) return;
-  const dx = e.changedTouches[0].clientX - gateTouchStartX;
-  if(Math.abs(dx) > 35) openGate();
-  gateTouchStartX = null;
-},{passive:true});
+  // The two cover halves swing outward like a real invitation book.
+  // Reveal the full-screen illustrated couple once the cover has opened.
+  window.setTimeout(()=>{
+    gate.classList.add('show-couple');
+    if(frontHint) frontHint.textContent = 'Rishi ♥ Ramya';
+  }, 900);
+
+  // Hold the couple portrait, then fade to the untouched second page.
+  window.setTimeout(()=>{
+    gate.classList.add('front-finished');
+    document.body.style.overflow = '';
+    window.setTimeout(()=>{ gate.style.display='none'; },750);
+  }, 3500);
+}
+gate.addEventListener('click', startOpening);
+gate.addEventListener('keydown', e=>{
+  if(e.key==='Enter' || e.key===' '){e.preventDefault();startOpening();}
+});
 
 // ---------------- Countdown ----------------
 const weddingDate = new Date('2026-11-11T09:05:00');

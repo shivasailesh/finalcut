@@ -1,19 +1,17 @@
-RISHI & RAMYA — FINAL UPDATE
+RISHI & RAMYA WEDDING INVITATION — FRONT PAGE CORRECTION
 
-ONLY TWO AREAS WERE CHANGED:
+Interaction sequence:
+1. Initial screen shows the closed wedding invitation image.
+2. Tap/click anywhere on the first screen (or press Enter/Space).
+3. The invitation fades away and the Ghibli-inspired couple image is revealed.
+4. After a short pause, the front layer fades out and the existing second page appears.
 
-1. FRONT PAGE
-- Starts as one complete, clear invitation image at the center.
-- On Slide to Open / tap / swipe, the center splits.
-- Left half moves to the left corner.
-- Right half moves to the right corner.
-- The V7 second page is then revealed.
+Only the front opening sequence was changed. The second-page HTML content and its existing styles/functions were preserved.
 
-2. PHOTO CAROUSEL
-- Fixed missing carousel dots container.
-- Added robust dot controls.
-- Auto-advance remains 4 seconds.
-- Previous/Next and mobile swipe remain.
-- Carousel height stays synchronized on resize.
+Front images:
+- assets/front-stages/invitation-closed.jpg
+- assets/front-stages/couple-reveal.jpg
 
-Everything else is kept as supplied.
+Music remains configured in the existing assets/music folder and existing music control.
+
+Front-page update: tapping/clicking the closed invitation now plays a 3D card-opening flip, reveals the illustrated couple, pauses briefly, and then transitions to the existing second page. The second-page content/design has not been edited.

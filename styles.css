@@ -163,108 +163,6 @@ footer strong{
 
 
 
-
-/* =========================================================
-   FRONT PAGE — CENTER CLOSED -> SPLIT TO CORNERS
-   The rest of the V7 design is unchanged.
-   ========================================================= */
-
-#gate{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  overflow:hidden;
-  cursor:pointer;
-  background:#f7efdf;
-  isolation:isolate;
-}
-
-.front-panel{
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:50%;
-  z-index:2;
-  background-image:url("assets/front-cover.png");
-  background-repeat:no-repeat;
-  background-size:200% 100%;
-  box-shadow:0 0 0 1px rgba(173,135,64,.45);
-  will-change:transform;
-  transition:transform 1.35s cubic-bezier(.77,0,.18,1);
-}
-
-/* CLOSED STATE: both halves are together, forming one complete image. */
-.front-panel.left{
-  left:0;
-  background-position:left center;
-  transform:translateX(0);
-}
-.front-panel.right{
-  right:0;
-  background-position:right center;
-  transform:translateX(0);
-}
-
-/* Small center seam, like two elegant invitation doors. */
-#gate::after{
-  content:"";
-  position:absolute;
-  z-index:4;
-  left:50%;
-  top:0;
-  bottom:0;
-  width:2px;
-  transform:translateX(-50%);
-  background:linear-gradient(180deg,rgba(173,135,64,.15),rgba(173,135,64,.85),rgba(173,135,64,.15));
-  box-shadow:0 0 10px rgba(173,135,64,.25);
-  pointer-events:none;
-  opacity:.9;
-}
-
-/* On open: center -> left/right edges. */
-#gate.opened .front-panel.left{
-  transform:translateX(-100%);
-}
-#gate.opened .front-panel.right{
-  transform:translateX(100%);
-}
-#gate.opened::after{
-  opacity:0;
-  transition:opacity .3s ease;
-}
-#gate.opened{
-  pointer-events:none;
-}
-
-/* Gentle idle movement so the front page feels alive, without moving the split. */
-#gate:not(.opened) .front-panel{
-  animation:frontBreath 5s ease-in-out infinite;
-}
-@keyframes frontBreath{
-  0%,100%{filter:brightness(1) saturate(1)}
-  50%{filter:brightness(1.025) saturate(1.02)}
-}
-
-.sr-only{
-  position:absolute;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  border:0;
-}
-
-@media(max-width:650px){
-  .front-panel{background-size:200% 100%;}
-}
-
-@media(prefers-reduced-motion:reduce){
-  .front-panel{animation:none!important;}
-}
-
 /* Venue */
 .map-preview {
   width: 100%;
@@ -280,3 +178,198 @@ footer strong{
   width: 100%;
   display: block;
 }
+
+
+/* FRONT PAGE — FULL-SCREEN INVITATION CARD OPENING */
+
+#gate.front-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f7efdf;
+  isolation: isolate;
+  perspective: 1800px;
+  opacity: 1;
+}
+
+/* Background stages */
+.front-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #f7efdf;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Couple image revealed after opening */
+.front-stage-couple {
+  z-index: 1;
+  background-image: url("assets/front-stages/couple-reveal.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f7efdf;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.7s ease;
+}
+
+/* Subtle image overlay */
+.front-stage-couple::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(35, 18, 12, 0.02),
+    transparent 20%,
+    transparent 80%,
+    rgba(35, 18, 12, 0.04)
+  );
+}
+
+/* Closed invitation cover */
+.front-stage-closed {
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+/* Two card covers */
+.card-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 2;
+
+  background-image: url("assets/front-stages/invitation-closed.jpg");
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+
+  backface-visibility: hidden;
+  will-change: transform;
+
+  transition:
+    transform 1.25s cubic-bezier(0.72, 0.02, 0.25, 1),
+    filter 1.1s ease;
+
+  box-shadow: 0 0 24px rgba(48, 23, 16, 0.18);
+}
+
+.card-door-left {
+  left: 0;
+  background-position: left center;
+  transform-origin: left center;
+}
+
+.card-door-right {
+  right: 0;
+  background-position: right center;
+  transform-origin: right center;
+}
+
+/* Removed the center spine/vertical line */
+
+#gate.card-opening .card-door-left {
+  transform: rotateY(-105deg);
+  filter: brightness(0.85);
+}
+
+#gate.card-opening .card-door-right {
+  transform: rotateY(105deg);
+  filter: brightness(0.85);
+}
+
+#gate.show-couple .front-stage-couple {
+  opacity: 1;
+}
+
+#gate.show-couple .front-stage-closed {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fade away before showing the main invitation */
+#gate.front-finished {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+/* Tap-to-open hint */
+.front-hint {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(74, 45, 40, 0.9);
+  color: #fffaf0;
+  border: 1px solid rgba(213, 184, 117, 0.9);
+
+  font: 700 12px/1.3 Montserrat, Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(45, 25, 18, 0.2);
+
+  animation: frontHintPulse 2s ease-in-out infinite;
+}
+
+#gate.card-opening .front-hint {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+@keyframes frontHintPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.035);
+  }
+}
+
+/* Mobile: use portrait artwork to fill the screen */
+@media (max-width: 650px), (max-aspect-ratio: 3/4) {
+  .front-stage-couple {
+    background-image: url("assets/front-stages/couple-reveal-mobile.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #f7efdf;
+  }
+
+  .front-hint {
+    bottom: max(18px, env(safe-area-inset-bottom));
+    font-size: 10px;
+    padding: 11px 17px;
+    max-width: 90vw;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .card-door,
+  .front-stage-couple,
+  .front-hint {
+    transition: none;
+    animation: none !important;
+  }
+}
+
+
+
+
